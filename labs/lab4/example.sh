@@ -1,10 +1,9 @@
-#! bin/bash 
-
-echo "Hello class: "
-echo "Today's date is:  "
-date 
-echo "current user :"
+#!/bin/bash
+echo "Hello class :"
+echo "Today's date :"
+date
+echo "Cureent user:"
 whoami
-echo"Current direcory :"
+echo "Cureent directory: "
 pwd
 
