@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>notes4.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="notes-4">Notes 4</h1>
+<h2 id="1-how-to-install-and-remove-software-using-apt">1. How to Install and Remove Software Using APT</h2>
+<p>APT (Advanced Package Tool) is used in Linux to install, update, and remove software using the terminal.</p>
+<h3 id="step-1-open-the-terminal">Step 1: Open the Terminal</h3>
+<p>Open the terminal in Linux by pressing <code>Ctrl + Alt + T</code>.</p>
+<h3 id="step-2-update-the-package-list">Step 2: Update the Package List</h3>
+<p>Before installing software, update the package list.</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">sudo</span> apt update
+</div></code></pre>
+<p>This command updates the list of available software packages.</p>
+<h3 id="step-3-install-software">Step 3: Install Software</h3>
+<p>To install software, use the <code>apt install</code> command.</p>
+<p><strong>Example 1: Install Tree</strong></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">sudo</span> apt install tree
+</div></code></pre>
+<p>The <code>tree</code> command displays files and folders in a tree structure.</p>
+<p><strong>Example 2: Install Htop</strong></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">sudo</span> apt install htop
+</div></code></pre>
+<p>Htop is used to view running processes and system performance.</p>
+<p><strong>Example 3: Install Curl</strong></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">sudo</span> apt install curl
+</div></code></pre>
+<p>Curl is used to transfer data from websites and servers.</p>
+<h3 id="step-4-remove-software">Step 4: Remove Software</h3>
+<p>To remove installed software, use the <code>apt remove</code> command.</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">sudo</span> apt remove tree
+</div></code></pre>
+<p>This removes the Tree program from Linux.</p>
+<h3 id="step-5-remove-software-completely">Step 5: Remove Software Completely</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">sudo</span> apt purge tree
+</div></code></pre>
+<p>This removes the program and its system configuration files.</p>
+<h3 id="step-6-remove-unused-packages">Step 6: Remove Unused Packages</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">sudo</span> apt autoremove
+</div></code></pre>
+<p>This removes dependencies that are no longer needed.</p>
+<hr>
+<h2 id="2-how-to-create-and-run-a-shell-script">2. How to Create and Run a Shell Script</h2>
+<p>A shell script is a text file that contains Linux commands. It allows us to run multiple commands together.</p>
+<h3 id="step-1-create-a-shell-script">Step 1: Create a Shell Script</h3>
+<p>Open the <strong>Text Editor</strong> in Linux and create a new file.</p>
+<p>Save the file with a <code>.sh</code> extension.</p>
+<p>For example:</p>
+<p><code>myscript.sh</code></p>
+<h3 id="step-2-add-the-shell-declaration">Step 2: Add the Shell Declaration</h3>
+<p>At the beginning of the file, type:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+</div></code></pre>
+<p>This tells Linux to use the Bash shell to run the script.</p>
+<h3 id="step-3-add-your-code">Step 3: Add Your Code</h3>
+<p>Below the shell declaration, write the commands you want to run.</p>
+<p>Example:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello Linux&quot;</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Today&#x27;s date is:&quot;</span>
+<span class="hljs-built_in">date</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Current user:&quot;</span>
+<span class="hljs-built_in">whoami</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Current directory:&quot;</span>
+<span class="hljs-built_in">pwd</span>
+</div></code></pre>
+<ul>
+<li><code>echo</code> displays a message.</li>
+<li><code>date</code> shows the current date and time.</li>
+<li><code>whoami</code> shows the current username.</li>
+<li><code>pwd</code> shows the current directory.</li>
+</ul>
+<p>After writing the code, save the file in the Text Editor.</p>
+<h3 id="step-4-run-the-shell-script">Step 4: Run the Shell Script</h3>
+<p>Open the terminal in the folder where the script was saved.</p>
+<p>First, give the script permission to run:</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">chmod</span> +x myscript.sh
+</div></code></pre>
+<p>Then run the script:</p>
+<pre class="hljs"><code><div>./myscript.sh
+</div></code></pre>
+<p>The terminal will display the message, current date, username, and directory.</p>
+<h3 id="screenshots">Screenshots</h3>
+<p><strong>Screenshot 1: My shell script in the Text Editor</strong></p>
+<p><img src="file:///home/aryanvm/cis-106/notes/notes4/scriptt.gif" alt="Shell Script"></p>
+<p><strong>Screenshot 2: Giving execute permission in the terminal</strong></p>
+<p><img src="file:///home/aryanvm/cis-106/notes/notes4/permission.png" alt="Permission"></p>
+<p><strong>Screenshot 3: Running the shell script</strong></p>
+<p><img src="file:///home/aryanvm/cis-106/notes/notes4/output.gif" alt="Output"></p>
+
+</body>
+</html>
